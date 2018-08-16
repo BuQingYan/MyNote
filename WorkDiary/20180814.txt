@@ -1,0 +1,15 @@
+工作：
+1、配置简单的拆组包交易
+
+问题：
+1、在协议下发时，esc报系统找不到路径（路径为协议配置文件地址）
+	Terminal中报zk NoNone（没有该节点）
+	检查配置文件发现配置的esc.terminal.system和esc.terminal.id没有和esc中配置的系统名和终端名对应
+	因此在zk中并没有配置文件中配置的节点
+2、门户中，RequestXssAop中空指针
+	修改代码，代码还没完善
+3、cloudui启动时，报系统找不到路径
+	把配置文件中的devportalRest、oauth2Rest配置上对应的路径
+4、门户提交实名认证时报系统找不到路径
+	修改配置文件中的testReport.webapp、webapp.deployStrategy.path、webapp.audit.path三个路径为绝对路径
+	

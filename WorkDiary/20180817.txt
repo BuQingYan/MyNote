@@ -1,0 +1,4 @@
+工作：
+1、阅读书籍《深入理解SpringCloud与微服务构建》中第5章（eureka）、第6章（ribbon）
+2、了解Rest架构设计风格
+3、学习OAuth2.0,并开始新建demo

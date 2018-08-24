@@ -1,0 +1,6 @@
+工作：
+1、SmartESC服务测试功能escTest.jsp、ESCController.jsva源码学习及文档整理
+2、SmartESC协议管理中协议下发功能issuedProtocol.jsp、ProtocolInfoController.java源码学习，里面包含了zookeeper、jmx技术
+
+笔记：
+1、ESCController.jsva中的拼接长度头部分代码无用，Teminal中拆包已不用在body中读长度头

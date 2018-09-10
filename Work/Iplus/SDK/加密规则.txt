@@ -1,21 +1,41 @@
 验证开发者请求报文加密规则：
 type: approveDev
-rasStr: Base64(RSA(randomKey, publicKeyS))
-head: AES256((
+rsaStr: Base64(RSA(randomKey, publicKeyS))
+head: Base64(AES256((
 	appkey: appkey
-	sign: Base64(MD5withRSA(SHA-256(appId+random+mac+hostName), privateKeyB))
 	RandomNum: randomNum
 	DevId: mac
 	DevName: hostName
 	randomWorkKey: randomWorkKey
-	), randomKey)
+	sign: Base64(MD5withRSA(SHA-256(appId+random+mac+hostName), privateKeyB))
+	), randomKey))
 	
 	
 验证开发者响应报文加密规则：
+head: Base64(AES256((
+	token: token
+	sign: Base64(MD5withRSA(token+randomNum, privateKeyS))
+	), randomKey))
 
 
 通信请求报文加密规则：
+type: JavaAPISecurityControlSend
+rsaStr: Base64(RSA(randomKey, publicKeyS))
+head: Base64(AES256((
+	appkey: appkey
+	token: token
+	sign: Base64(MD5withRSA(reqData+token, privateKeyB))
+	), randomKey))
+data: Base64(AES256(
+	data: reqData
+	), randomKey))
 
 
 通信响应报文加密规则：
+head: Base64(AES256((
+	sign: Base64(MD5withRSA(respData, privateKeyS))
+	), randomKey))
+data: Base64(AES256(
+	data: respData
+	), randomKey))
 

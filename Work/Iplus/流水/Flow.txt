@@ -1,0 +1,17 @@
+Terminal:
+	FlowLogService.invoke():
+		1、流水服务开关：esb.logconfig
+		2、流水信息内容：
+		3、流水模式-同步模式开关：esb.sendFlowLogIntime
+	JournalWorkProducer.onData():
+		1、Disruptor队列中RingBuffer的个数：journallog.disruptor.ringsize
+		2、Disruptor队列中每个RingBuffer的大小：journallog.disruptor.buffersize
+		3、Disruptor队列中每个RingBuffer对应的消费者数量：journallog.disruptor.consumer
+		4、Disruptor队列中每个RingBuffer对应的消费者对应的线程池大小：journallog.disruptor.executorFixedThreadPool
+	JournalWorkHandler.onEvent()：
+		1、线程池大小：10
+	FlowSendInTime.run()：
+		1、流水发送阈值：journallog.disruptor.sendJournalSize
+	SendFlowProcess.run():
+		1、journal端IP：journallog.process.socketip
+		2、journal端流水对应的Socket端口：journallog.process.socketPort

@@ -15,3 +15,34 @@ Terminal:
 	SendFlowProcess.run():
 		1、journal端IP：journallog.process.socketip
 		2、journal端流水对应的Socket端口：journallog.process.socketPort
+	FlowRuntimeTask.run()：
+		1、文件路径：esc.agent.terminal.flow.path/(flow+threadName+Date).flow
+		
+Journal：
+	同步：
+	JournallogReceiverIntime.HandleSocket.run():
+		1、journal端同步流水Socket端口：journallog.intime.tcp.port
+		2、journal端同步流水Socket最大连接数：journallog.tcp.backlog
+		3、线程池大小：journallog.tcp.thrneads
+	JournalWorkProducer.onData():
+		1、Disruptor队列中RingBuffer的个数：journallog.disruptor.ringsize
+		2、Disruptor队列中每个RingBuffer的大小：journallog.disruptor.buffersize
+		3、Disruptor队列中每个RingBuffer对应的消费者数量：journallog.disruptor.consumer
+		4、Disruptor队列中每个RingBuffer对应的消费者对应的线程池大小：journallog.disruptor.executorFixedThreadPool
+	JournalWorkHandler.onEvent():
+		1、数据库用户：monitor
+		2、涉及表：esc_trans_log
+		3、流水入库失败后，存储失败流水文件路径：journallog.file.path/(Data+_+randomInt).flow.buff
+		
+Agent：
+	AgentBaseTask.run()：
+		1、异步流水文件扫描线程睡眠时间：esc.agent.monitor.push.time
+	FlowFileProcessImpl.process()：
+		1、异步流水文件错误上限：esc.agent.monitor.pursh.error.times
+		2、Agent守护对象列表：esc.agent.target.ids
+		3、journal端对应的异步流水的TCP连接地址：esc.agent.monitor.flow.address
+		4、tcp连接超时时限：esc.agent.monitor.push.conntimeout
+		5、tcp读取超时时限：esc.agent.monitor.push.readtimeout
+		
+		
+	
